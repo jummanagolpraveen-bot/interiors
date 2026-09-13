@@ -11,7 +11,7 @@ import { Select } from '@/components/ui/Select'
 export default function BudgetPlannerPage() {
   const { roomId } = useParams()
   const router = useRouter()
-  const supabase = createClient()
+  const [supabase] = useState(() => createClient())
 
   const [loading, setLoading] = useState(true)
   const [generating, setGenerating] = useState(false)

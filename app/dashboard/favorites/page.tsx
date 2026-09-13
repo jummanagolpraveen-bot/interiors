@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { Heart } from 'lucide-react'
 
 export default function FavoritesPage() {
-  const supabase = createClient()
+  const [supabase] = useState(() => createClient())
   const [favorites, setFavorites] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 

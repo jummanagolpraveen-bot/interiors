@@ -4,6 +4,8 @@ import { LanguageProvider } from '@/lib/contexts/LanguageContext'
 import { LanguageSelector } from '@/components/ui/LanguageSelector'
 import { Assistant } from '@/components/ui/Assistant'
 
+export const dynamic = 'force-dynamic'
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>

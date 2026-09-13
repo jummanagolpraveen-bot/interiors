@@ -10,7 +10,7 @@ import { Spinner } from '@/components/ui/Spinner'
 export default function AnalyzeRoomPage() {
   const { id } = useParams()
   const router = useRouter()
-  const supabase = createClient()
+  const [supabase] = useState(() => createClient())
 
   const [status, setStatus] = useState<'analyzing' | 'done' | 'error' | 'not_configured' | 'limit_reached'>('analyzing')
   const [errorMessage, setErrorMessage] = useState('')

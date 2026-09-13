@@ -14,7 +14,7 @@ export default function NewProjectWizard() {
   const { step, project, room, file, setStep, setProject, setRoom, setFile } = useWizardStore()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
-  const supabase = createClient()
+  const [supabase] = useState(() => createClient())
 
   const handleNext = () => setStep(step + 1)
   const handleBack = () => setStep(step - 1)

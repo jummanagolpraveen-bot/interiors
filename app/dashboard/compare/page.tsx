@@ -16,7 +16,7 @@ function CompareContent() {
   
   const [designs, setDesigns] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
+  const [supabase] = useState(() => createClient())
 
   useEffect(() => {
     const fetchDesigns = async () => {
