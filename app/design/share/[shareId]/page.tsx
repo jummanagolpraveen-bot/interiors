@@ -5,8 +5,13 @@ import { notFound } from 'next/navigation'
 
 export default async function SharedDesignPage({ params }: { params: { shareId: string } }) {
   // Try to use a service role client to bypass RLS, or fallback to anon client which will fail without a policy update
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Supabase Configuration Error: NEXT_PUBLIC_SUPABASE_URL and key must be configured.')
+  }
+
   const { createClient } = require('@supabase/supabase-js')
   const supabase = createClient(supabaseUrl, supabaseKey)
 
